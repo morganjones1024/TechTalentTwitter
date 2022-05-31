@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<title>Twitter Feed</title>
+<th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+	<div th:if="${not #lists.isEmpty(tweetList)}">
+		<div th:replace="fragments/navbar"></div>
+		<ul class="nav nav-tabs">
+			<li role="presentation"
+				th:classappend="${filter == 'all' ? 'active' : '' }"><a
+				href="/tweets">All</a></li>
+			<li role="presentation"
+				th:classappend="${filter == 'following' ? 'active' : '' }"><a
+				href="/tweets?filter=following">Following</a></li>
+		</ul>
+		<br />
+		
+	</div>
+	<div th:replace="fragments/tweetlist"></div>
+	<div th:replace="fragments/tweetlistheader"></div>
+</body>
+</html>
